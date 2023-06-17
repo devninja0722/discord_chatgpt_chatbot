@@ -12,6 +12,17 @@ function generateHash() {
     }
 }
 
+function generateData() {
+    const chars = "qwertyuopasdfghjklizxcvbnm0123456789"
+    let hash = ""
+    for (let i = 0; i < 11; i++) {
+        hash += chars[Math.floor(Math.random() * chars.length)]
+    }
+    return {
+        session_hash: hash,
+        fn_index: 2
+    }
+}
 function request(API_URL,userData, callback,opts={}, tryCount=5) {
     const client = new WebSocket(API_URL);
     const hash = generateHash()
